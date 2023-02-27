@@ -15,6 +15,7 @@ from pathlib import Path
 from configurations import Configuration
 from configurations import values
 import dj_database_url
+# from argon2 import PasswordHasher
 
 class Dev(Configuration):
   # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -195,6 +196,13 @@ class Dev(Configuration):
         "level": "DEBUG",
     },
   }
+  
+  PASSWORD_HASHERS = [
+      'django.contrib.auth.hashers.Argon2PasswordHasher',
+      'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+      'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+      'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+  ]
 
 class Prod(Dev):
     DEBUG = False
