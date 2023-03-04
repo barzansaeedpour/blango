@@ -3,7 +3,9 @@ from django.utils.safestring import mark_safe
 from django import template
 from django.contrib.auth import get_user_model
 from blog.models import Post
+import logging
 
+logger = logging.getLogger(__name__)
 
 user_model = get_user_model()
 
@@ -35,6 +37,8 @@ def author_details(author, current_user=None):
 @register.inclusion_tag("blog/post-list.html")
 def recent_posts(post):
     posts = Post.objects.exclude(pk=post.pk)[:5]
+    print("**** this is working ****")
+    logger.debug("Loaded %d recent posts for post %d", len(posts), post.pk)
     return {"title": "Recent Posts", "posts": posts}
 
 @register.simple_tag
