@@ -31,6 +31,7 @@ class Dev(Configuration):
   # SECURITY WARNING: don't run with debug turned on in production!
   # DEBUG = True
   DEBUG = values.BooleanValue(True)
+  AUTH_USER_MODEL = "blango_auth.User"
 
   # ALLOWED_HOSTS = ['*']
   ALLOWED_HOSTS = values.ListValue(["localhost", "0.0.0.0", ".codio.io"])
@@ -58,6 +59,7 @@ class Dev(Configuration):
       "debug_toolbar",
       ####################################
       'blog',
+      "blango_auth", 
       
   ]
   INTERNAL_IPS = ["192.168.10.226"]
