@@ -1,0 +1,8 @@
+Activate your Blango account! You have {{ expiration_days }} days!
+{{ scheme }}://{{ request.get_host }}{% url "django_registration_activate" activation_key %}
+
+
+
+
+
+
